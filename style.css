@@ -1126,9 +1126,6 @@ ul {
 
 /***** Hero component *****/
 .hero {
-  background-image: url($homepage_background_image);
-  background-position: center;
-  background-size: cover;
   height: 300px;
   padding: 0 20px;
   text-align: center;
@@ -1365,9 +1362,6 @@ ul {
 .community-image {
   min-height: 300px;
   margin-top: 32px;
-  background-image: url($community_image);
-  background-position: center;
-  background-repeat: no-repeat;
   max-width: 100%;
 }
 .community a {
