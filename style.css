@@ -3196,11 +3196,33 @@ ul {
     display: block;
   }
 }
+.collapsible-sidebar-body ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 .collapsible-sidebar[aria-expanded=true] {
   max-height: none;
 }
 .collapsible-sidebar[aria-expanded=true] .collapsible-sidebar-body {
   display: block;
+}
+
+.sidenav-item {
+  display: block;
+  padding: 6px 0;
+  color: $text_color;
+  border-left: 3px solid transparent;
+  padding-left: 10px;
+}
+.sidenav-item:hover {
+  color: $brand_color;
+  text-decoration: none;
+}
+.sidenav-item.current-article {
+  border-left-color: $brand_color;
+  color: $brand_color;
+  font-weight: 600;
 }
 
 /***** My activities *****/
