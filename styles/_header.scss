@@ -2,12 +2,41 @@
 $header-height: 71px;
 
 .header {
-  @include max-width-container;
   position: relative;
   align-items: center;
   display: flex;
   height: $header-height;
   justify-content: space-between;
+  padding: 0 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header-categories-nav {
+  display: none;
+
+  @include desktop {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.header-category-link {
+  color: $text-color;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(0, 0, 0, 0.06);
+    text-decoration: none;
+    color: $text-color;
+  }
 }
 
 .logo img {
