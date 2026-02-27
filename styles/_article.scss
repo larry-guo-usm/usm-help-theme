@@ -1,3 +1,71 @@
+/***** Sections subnav *****/
+.sections-subnav {
+  position: sticky;
+  top: $header-height;
+  z-index: 99;
+  background-color: $background_color;
+  border-bottom: 1px solid $low-contrast-border-color;
+  min-height: $subnav-height;
+
+  &-inner {
+    display: flex;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 12px 16px;
+    color: $secondary-text-color;
+    font-size: $font-size-navigation;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+
+    &:hover {
+      text-decoration: none;
+      color: $text_color;
+    }
+
+    &.is-active {
+      color: $brand_color;
+      border-bottom-color: $brand_color;
+      font-weight: $font-weight-semibold;
+    }
+  }
+}
+
+/***** Article header search *****/
+.article-header-search {
+  // Mobile/tablet: show as a normal search bar in page flow
+  margin: 16px 5%;
+
+  @include tablet {
+    margin: 16px auto;
+    max-width: 400px;
+  }
+
+  @include desktop {
+    // Fix it into the center of the sticky header
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: $header-height;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    margin: 0;
+  }
+}
+
 /***** Article *****/
 .article {
   /*
@@ -118,8 +186,12 @@
     @include desktop {
       border: 0;
       flex: 0 0 17%;
-      height: auto;
       max-width: 17%;
+      position: sticky;
+      top: calc(#{$header-height} + #{$subnav-height});
+      max-height: calc(100vh - #{$header-height} - #{$subnav-height});
+      overflow-y: auto;
+      align-self: flex-start;
     }
 
     border-bottom: 1px solid $low-contrast-border-color;

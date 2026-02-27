@@ -1,8 +1,11 @@
 /***** Header *****/
-$header-height: 71px;
 
 .header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: $background_color;
+  border-bottom: 1px solid $low-contrast-border-color;
   align-items: center;
   display: flex;
   height: $header-height;
