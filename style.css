@@ -631,32 +631,6 @@ ul {
   box-sizing: border-box;
 }
 
-.header-categories-nav {
-  display: none;
-}
-@media (min-width: 1024px) {
-  .header-categories-nav {
-    display: flex;
-    gap: 8px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-
-.header-category-link {
-  color: $text_color;
-  font-size: 14px;
-  padding: 6px 12px;
-  border-radius: 4px;
-  white-space: nowrap;
-}
-.header-category-link:hover, .header-category-link:focus {
-  background-color: rgba(0, 0, 0, 0.06);
-  text-decoration: none;
-  color: $text_color;
-}
-
 .logo img {
   max-height: 37px;
   vertical-align: middle;
@@ -3223,24 +3197,6 @@ ul {
   border-left-color: $brand_color;
   color: $brand_color;
   font-weight: 600;
-}
-
-.sidebar-section-group {
-  margin-bottom: 12px;
-}
-
-.sidebar-section-title {
-  margin: 0 0 4px;
-  padding: 8px 0;
-  font-size: 14px;
-  font-weight: 600;
-  color: $text_color;
-}
-
-.sidebar-section-articles {
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 /***** My activities *****/

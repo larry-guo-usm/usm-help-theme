@@ -92,22 +92,3 @@
     font-weight: 600;
   }
 }
-
-// Enhanced multi-section sidebar
-.sidebar-section-group {
-  margin-bottom: 12px;
-}
-
-.sidebar-section-title {
-  margin: 0 0 4px;
-  padding: 8px 0;
-  font-size: $font-size-navigation;
-  font-weight: $font-weight-semibold;
-  color: $text_color;
-}
-
-.sidebar-section-articles {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
