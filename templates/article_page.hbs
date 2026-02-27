@@ -24,13 +24,13 @@
             </svg>
           </button>
           <span id="section-articles-title" class="collapsible-sidebar-title sidenav-title">
-            {{t 'articles_in_section'}}
+            {{section.name}}
           </span>
           <div class="collapsible-sidebar-body">
-            <ul>
+            <ul data-section-id="{{section.id}}" data-current-article-id="{{article.id}}">
               {{#each section.articles}}
                 <li>
-                  <a href="{{url}}" 
+                  <a href="{{url}}"
                      class="sidenav-item {{#is id ../article.id}}current-article{{/is}}"
                      {{#is id ../article.id}}aria-current="page"{{/is}}>
                        {{title}}
@@ -38,9 +38,6 @@
                 </li>
               {{/each}}
             </ul>
-            {{#if section.more_articles}}
-              <a href="{{section.url}}" class="article-sidebar-item">{{t 'see_more'}}</a>
-            {{/if}}
           </div>
         </div>
       {{/if}}
