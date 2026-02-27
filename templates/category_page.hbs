@@ -24,7 +24,7 @@
         {{#each sections}}
           <section class="section">
             <h2 class="section-tree-title">
-              <a href="{{url}}">{{name}}</a>
+              <a href="{{#each articles}}{{#if @first}}{{url}}{{/if}}{{else}}{{url}}{{/each}}">{{name}}</a>
             </h2>
             {{#if articles}}
               <ul class="article-list">

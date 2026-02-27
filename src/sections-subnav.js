@@ -31,15 +31,35 @@ window.addEventListener("DOMContentLoaded", function () {
   cachedFetch(base + "/sections/" + currentSectionId + ".json")
     .then(function (data) {
       var categoryId = data.section.category_id;
-      return cachedFetch(
-        base + "/categories/" + categoryId + "/sections.json?per_page=100"
-      );
+      return Promise.all([
+        cachedFetch(
+          base + "/categories/" + categoryId + "/sections.json?per_page=100"
+        ),
+        cachedFetch(
+          base +
+            "/categories/" +
+            categoryId +
+            "/articles.json?per_page=100&sort_by=position"
+        ),
+      ]);
     })
-    .then(function (data) {
+    .then(function (results) {
+      var sectionsData = results[0];
+      var articlesData = results[1];
+
+      // Build map: section_id → first article html_url (articles are sorted by
+      // position, so the first occurrence per section is the first article)
+      var firstArticleUrl = {};
+      articlesData.articles.forEach(function (a) {
+        if (!firstArticleUrl[a.section_id]) {
+          firstArticleUrl[a.section_id] = a.html_url;
+        }
+      });
+
       var inner = nav.querySelector(".sections-subnav-inner");
-      data.sections.forEach(function (s) {
+      sectionsData.sections.forEach(function (s) {
         var a = document.createElement("a");
-        a.href = s.html_url;
+        a.href = firstArticleUrl[s.id] || s.html_url;
         a.textContent = s.name;
         a.className =
           "sections-subnav-link" +

@@ -753,15 +753,35 @@
     cachedFetch(base + "/sections/" + currentSectionId + ".json")
       .then(function (data) {
         var categoryId = data.section.category_id;
-        return cachedFetch(
-          base + "/categories/" + categoryId + "/sections.json?per_page=100"
-        );
+        return Promise.all([
+          cachedFetch(
+            base + "/categories/" + categoryId + "/sections.json?per_page=100"
+          ),
+          cachedFetch(
+            base +
+              "/categories/" +
+              categoryId +
+              "/articles.json?per_page=100&sort_by=position"
+          ),
+        ]);
       })
-      .then(function (data) {
+      .then(function (results) {
+        var sectionsData = results[0];
+        var articlesData = results[1];
+
+        // Build map: section_id → first article html_url (articles are sorted by
+        // position, so the first occurrence per section is the first article)
+        var firstArticleUrl = {};
+        articlesData.articles.forEach(function (a) {
+          if (!firstArticleUrl[a.section_id]) {
+            firstArticleUrl[a.section_id] = a.html_url;
+          }
+        });
+
         var inner = nav.querySelector(".sections-subnav-inner");
-        data.sections.forEach(function (s) {
+        sectionsData.sections.forEach(function (s) {
           var a = document.createElement("a");
-          a.href = s.html_url;
+          a.href = firstArticleUrl[s.id] || s.html_url;
           a.textContent = s.name;
           a.className =
             "sections-subnav-link" +
@@ -772,6 +792,49 @@
       .catch(function (err) {
         console.error("[sections-subnav]", err);
       });
+  });
+
+  window.addEventListener("DOMContentLoaded", function () {
+    var links = document.querySelectorAll("a[data-section-id]");
+    if (!links.length) return;
+
+    var localeMatch = window.location.pathname.match(/\/hc\/([^/]+)\//);
+    var locale = localeMatch ? localeMatch[1] : "en-us";
+    var base = "/api/v2/help_center/" + locale;
+
+    function cachedFetch(url) {
+      var key = "hsl:" + url;
+      try {
+        var cached = sessionStorage.getItem(key);
+        if (cached) return Promise.resolve(JSON.parse(cached));
+      } catch (_) {}
+      return fetch(url)
+        .then(function (r) {
+          if (!r.ok) throw new Error("fetch failed: " + r.status + " " + url);
+          return r.json();
+        })
+        .then(function (data) {
+          try {
+            sessionStorage.setItem(key, JSON.stringify(data));
+          } catch (_) {}
+          return data;
+        });
+    }
+
+    links.forEach(function (link) {
+      var sectionId = link.dataset.sectionId;
+      cachedFetch(
+        base + "/sections/" + sectionId + "/articles.json?per_page=1&sort_by=position"
+      )
+        .then(function (data) {
+          if (data.articles && data.articles[0]) {
+            link.href = data.articles[0].html_url;
+          }
+        })
+        .catch(function (err) {
+          console.error("[home-section-links]", err);
+        });
+    });
   });
 
 })();
