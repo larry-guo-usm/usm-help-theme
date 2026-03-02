@@ -9,10 +9,10 @@
 
   > button {
     border: 0;
-    color: $link_color;
     min-width: 0;
     padding: 0;
     white-space: nowrap;
+    font-weight: 600;
 
     &:hover,
     &:focus {

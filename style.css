@@ -647,11 +647,17 @@ ul {
 
 .logo span {
   margin: 0 10px;
-  color: $brand_color;
 }
 
 .logo a {
   display: inline-block;
+  font-weight: 600;
+  font-size: 24px;
+}
+@media (max-width: 768px) {
+  .logo a {
+    font-size: 18px;
+  }
 }
 
 .logo a:hover, .logo a:focus, .logo a:active {
@@ -975,10 +981,10 @@ ul {
 }
 .user-info > button {
   border: 0;
-  color: $link_color;
   min-width: 0;
   padding: 0;
   white-space: nowrap;
+  font-weight: 600;
 }
 .user-info > button:hover, .user-info > button:focus {
   color: $link_color;
@@ -1847,10 +1853,16 @@ ul {
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+  padding-top: 24px;
 }
 @media (min-width: 768px) {
   .article-title {
     flex-basis: 100%; /* Take entire row */
+  }
+}
+@media (max-width: 768px) {
+  .article-title {
+    font-size: 18px;
   }
 }
 .article-title .icon-lock {
@@ -2026,7 +2038,7 @@ ul {
     max-height: calc(100vh - 71px - 45px);
     overflow-y: auto;
     align-self: flex-start;
-    padding-top: 20px;
+    padding-top: 24px;
   }
 }
 .article-relatives {
@@ -2112,9 +2124,15 @@ ul {
 }
 
 .sidenav-title {
-  font-size: 15px;
+  display: none;
+  font-size: 18px;
   position: relative;
   font-weight: 600;
+}
+@media (min-width: 1024px) {
+  .sidenav-title {
+    display: block;
+  }
 }
 .sidenav-item {
   display: block;
@@ -2191,15 +2209,12 @@ ul {
   font-weight: 600;
 }
 
-/* Mobile TOC trigger (sticky zero-height wrapper) */
+/* Mobile TOC trigger */
 .article-toc-mobile-trigger {
-  position: sticky;
+  position: fixed;
   top: calc(71px + 45px + 12px);
-  height: 0;
-  overflow: visible;
-  display: flex;
-  justify-content: flex-end;
-  z-index: 200;
+  right: 16px;
+  z-index: 10;
 }
 @media (min-width: 1024px) {
   .article-toc-mobile-trigger {
@@ -3586,7 +3601,7 @@ ul {
   display: block;
   padding: 6px 10px;
   border-radius: 6px;
-  color: lighten($text_color, 20%);
+  color: $text_color;
   margin: 1px 0;
   transition: background 0.1s ease, color 0.1s ease;
 }
@@ -3608,7 +3623,7 @@ ul {
   z-index: 98;
   background: $background_color;
   border-bottom: 1px solid #E1E3E6;
-  padding: 0 5%;
+  padding: 0 24px;
 }
 @media (min-width: 1024px) {
   .sidebar-mobile-bar {
@@ -3637,7 +3652,7 @@ ul {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-  padding-bottom: 16px;
+  padding-bottom: 24px;
   border-bottom: 1px solid #E1E3E6;
 }
 @media (min-width: 1024px) {

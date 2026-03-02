@@ -157,7 +157,7 @@
   display: block;
   padding: 6px 10px;
   border-radius: 6px;
-  color: $secondary-text-color;
+  color: $text_color;
   margin: 1px 0;
   transition: background 0.1s ease, color 0.1s ease;
 
@@ -186,7 +186,7 @@
   z-index: 98;
   background: $background_color;
   border-bottom: 1px solid $low-contrast-border-color;
-  padding: 0 5%;
+  padding: 0 24px;
 }
 
 .sidebar-mobile-open {
@@ -215,7 +215,7 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-  padding-bottom: 16px;
+  padding-bottom: 24px;
   border-bottom: 1px solid $low-contrast-border-color;
 }
 

@@ -63,19 +63,16 @@
   }
 }
 
-/* Mobile TOC trigger (sticky zero-height wrapper) */
+/* Mobile TOC trigger */
 .article-toc-mobile-trigger {
   @include desktop {
     display: none;
   }
 
-  position: sticky;
+  position: fixed;
   top: calc(#{$header-height} + #{$subnav-height} + 12px);
-  height: 0;
-  overflow: visible;
-  display: flex;
-  justify-content: flex-end;
-  z-index: 200;
+  right: 16px;
+  z-index: 10;
 }
 
 .article-toc-popup-wrapper {
