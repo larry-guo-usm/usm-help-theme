@@ -290,14 +290,13 @@ a:hover, a:active, a:focus {
 }
 
 .container {
-  max-width: 1160px;
+  max-width: 1392px;
   margin: 0 auto;
-  padding: 0 5%;
+  padding: 0;
 }
 @media (min-width: 1160px) {
   .container {
     padding: 0;
-    width: 90%;
   }
 }
 
@@ -622,6 +621,8 @@ ul {
 /***** Header *****/
 .header {
   position: sticky;
+  max-width: 1392px;
+  margin: auto;
   top: 0;
   z-index: 100;
   background-color: $background_color;
@@ -1800,7 +1801,7 @@ ul {
     flex: 1 0 66%;
     max-width: 66%;
     min-width: 640px;
-    padding: 0 30px;
+    padding: 24px;
   }
 }
 .article-container {
@@ -2016,7 +2017,7 @@ ul {
     max-height: calc(100vh - 71px - 45px);
     overflow-y: auto;
     align-self: flex-start;
-    padding-top: 20px;
+    padding-top: 24px;
   }
 }
 .article-relatives {
