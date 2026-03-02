@@ -33,6 +33,13 @@
   text-decoration: none;
 }
 
+.header-search {
+  @include mobile { display: none; }
+  flex: 1;
+  max-width: 480px;
+  margin: 0 20px;
+}
+
 .user-nav {
   @include tablet { position: relative; }
   display: inline-block;

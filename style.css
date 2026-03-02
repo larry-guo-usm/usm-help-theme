@@ -653,6 +653,17 @@ ul {
   text-decoration: none;
 }
 
+.header-search {
+  flex: 1;
+  max-width: 480px;
+  margin: 0 20px;
+}
+@media (max-width: 768px) {
+  .header-search {
+    display: none;
+  }
+}
+
 .user-nav {
   display: inline-block;
   position: absolute;
