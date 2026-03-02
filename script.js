@@ -731,11 +731,18 @@
     var locale = localeMatch ? localeMatch[1] : "en-us";
     var base = "/api/v2/help_center/" + locale;
 
-    function cachedFetch(url) {
+    var CACHE_TTL = 10 * 60 * 1000; // 10 minutes
+
+    function apiFetch(url) {
       var key = "subnav:" + url;
       try {
-        var cached = sessionStorage.getItem(key);
-        if (cached) return Promise.resolve(JSON.parse(cached));
+        var entry = sessionStorage.getItem(key);
+        if (entry) {
+          var parsed = JSON.parse(entry);
+          if (Date.now() - parsed.ts < CACHE_TTL) {
+            return Promise.resolve(parsed.data);
+          }
+        }
       } catch (_) {}
       return fetch(url)
         .then(function (r) {
@@ -744,7 +751,7 @@
         })
         .then(function (data) {
           try {
-            sessionStorage.setItem(key, JSON.stringify(data));
+            sessionStorage.setItem(key, JSON.stringify({ ts: Date.now(), data: data }));
           } catch (_) {}
           return data;
         });
@@ -752,15 +759,15 @@
 
     var currentSection = null;
 
-    cachedFetch(base + "/sections/" + currentSectionId + ".json")
+    apiFetch(base + "/sections/" + currentSectionId + ".json")
       .then(function (data) {
         currentSection = data.section;
         var categoryId = data.section.category_id;
         return Promise.all([
-          cachedFetch(
+          apiFetch(
             base + "/categories/" + categoryId + "/sections.json?per_page=100"
           ),
-          cachedFetch(
+          apiFetch(
             base +
               "/categories/" +
               categoryId +
