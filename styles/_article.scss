@@ -100,7 +100,6 @@
   &-header {
     @include tablet {
       flex-direction: row;
-      margin-top: 0;
     }
 
     align-items: flex-start;
@@ -108,8 +107,6 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 40px;
-    margin-top: 20px;
   }
 
   &-avatar {
@@ -129,7 +126,7 @@
     @include tablet {
       flex-basis: 100%; /* Take entire row */
     }
-    @include mobile {font-size: 18px;}
+    @include mobile {font-size: 24px;}
 
     .icon-lock {
       position: relative;
@@ -164,7 +161,6 @@
 
   &-content {
     line-height: 1.6;
-    margin: 40px 0;
     word-wrap: break-word;
   }
 
