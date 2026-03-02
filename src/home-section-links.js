@@ -1,4 +1,34 @@
 window.addEventListener("DOMContentLoaded", function () {
+  var iconList = document.querySelector(".blocks-list[data-icon1]");
+  if (iconList) {
+    var items = iconList.querySelectorAll(".blocks-item");
+    items.forEach(function (item, index) {
+      var n = index + 1;
+
+      var iconUrl = iconList.dataset["icon" + n];
+      if (iconUrl) {
+        var iconDiv = item.querySelector(".blocks-item-icon");
+        if (iconDiv) {
+          var img = document.createElement("img");
+          img.src = iconUrl;
+          img.alt = "";
+          img.setAttribute("aria-hidden", "true");
+          iconDiv.innerHTML = "";
+          iconDiv.appendChild(img);
+        }
+      }
+
+      var descText = iconList.dataset["desc" + n];
+      if (descText) {
+        var descSpan = item.querySelector(".blocks-item-description");
+        if (descSpan) {
+          descSpan.textContent = descText;
+        }
+      }
+    });
+    iconList.classList.add("is-ready");
+  }
+
   var links = document.querySelectorAll("a[data-section-id]");
   if (!links.length) return;
 

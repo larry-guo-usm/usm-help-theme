@@ -397,6 +397,89 @@
           "value": true
         }
       ]
+    },
+    {
+      "label": "home_cards_group_label",
+      "variables": [
+        {
+          "identifier": "home_card_1_icon",
+          "type": "file",
+          "description": "home_card_icon_description",
+          "label": "home_card_1_icon_label"
+        },
+        {
+          "identifier": "home_card_1_description",
+          "type": "text",
+          "description": "home_card_description_description",
+          "label": "home_card_1_description_label",
+          "value": "Manage your account, SIM, and profile settings."
+        },
+        {
+          "identifier": "home_card_2_icon",
+          "type": "file",
+          "description": "home_card_icon_description",
+          "label": "home_card_2_icon_label"
+        },
+        {
+          "identifier": "home_card_2_description",
+          "type": "text",
+          "description": "home_card_description_description",
+          "label": "home_card_2_description_label",
+          "value": "Explore flexible wireless plans and add-on features."
+        },
+        {
+          "identifier": "home_card_3_icon",
+          "type": "file",
+          "description": "home_card_icon_description",
+          "label": "home_card_3_icon_label"
+        },
+        {
+          "identifier": "home_card_3_description",
+          "type": "text",
+          "description": "home_card_description_description",
+          "label": "home_card_3_description_label",
+          "value": "Activate your SIM card and troubleshoot device issues."
+        },
+        {
+          "identifier": "home_card_4_icon",
+          "type": "file",
+          "description": "home_card_icon_description",
+          "label": "home_card_4_icon_label"
+        },
+        {
+          "identifier": "home_card_4_description",
+          "type": "text",
+          "description": "home_card_description_description",
+          "label": "home_card_4_description_label",
+          "value": "View invoices, update payment methods, and manage charges."
+        },
+        {
+          "identifier": "home_card_5_icon",
+          "type": "file",
+          "description": "home_card_icon_description",
+          "label": "home_card_5_icon_label"
+        },
+        {
+          "identifier": "home_card_5_description",
+          "type": "text",
+          "description": "home_card_description_description",
+          "label": "home_card_5_description_label",
+          "value": "Check coverage and troubleshoot connectivity issues."
+        },
+        {
+          "identifier": "home_card_6_icon",
+          "type": "file",
+          "description": "home_card_icon_description",
+          "label": "home_card_6_icon_label"
+        },
+        {
+          "identifier": "home_card_6_description",
+          "type": "text",
+          "description": "home_card_description_description",
+          "label": "home_card_6_description_label",
+          "value": "Get help from our team via chat, email, or phone."
+        }
+      ]
     }
   ]
 }

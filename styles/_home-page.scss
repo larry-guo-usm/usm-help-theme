@@ -13,6 +13,16 @@
   text-align: center;
 }
 
+/***** Home cards *****/
+.home-cards-list {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+
+  &.is-ready {
+    opacity: 1;
+  }
+}
+
 /***** Promoted articles *****/
 
 .promoted-articles {

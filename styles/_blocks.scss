@@ -18,24 +18,29 @@
       margin: 0 15px 30px;
     }
 
+    background-color: $brand_color;
     border: 1px solid $brand_color;
     border-radius: 4px;
     box-sizing: border-box;
-    color: $brand_color;
+    color: $brand_text_color;
     display: flex;
     flex: 1 0 340px;
     margin: 0 0 30px;
     max-width: 100%;
-    text-align: center;
+    text-align: left;
 
     &:hover,
     &:focus,
     &:active {
-      background-color: $brand_color;
+      background-color: transparent;
 
       * {
-        color: $brand_text_color;
+        color: $brand_color;
         text-decoration: none;
+      }
+
+      .blocks-item-icon img {
+        filter: none;
       }
     }
 
@@ -55,12 +60,13 @@
   }
 
   &-item-link {
-    color: $brand_color;
-    padding: 20px 30px;
+    color: $brand_text_color;
+    padding: 24px 28px;
     display: flex;
     flex-direction: column;
     flex: 1;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     border-radius: inherit;
 
     &:visited,
@@ -69,23 +75,46 @@
       color: inherit;
       text-decoration: none;
     }
-    
+
     &:focus {
       @include focus-ring;
       text-decoration: none;
     }
   }
 
+  &-item-icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 16px;
+    flex-shrink: 0;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+  }
+
   &-item-title {
-    margin-bottom: 0;
+    font-weight: 700;
     font-size: 16px;
+    margin-bottom: 6px;
   }
 
   &-item-description {
     margin: 0;
+    font-size: 14px;
+    opacity: 0.85;
   }
 
   &-item-description:not(:empty) {
-    margin-top: 10px;
+    margin-top: 0;
   }
 }
