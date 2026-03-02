@@ -83,6 +83,15 @@
         {{/if}}
       </header>
 
+      <div class="article-toc-mobile-trigger">
+        <button type="button" class="article-toc-mobile-btn" aria-label="{{t 'on_this_page'}}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" focusable="false" viewBox="0 0 16 16" aria-hidden="true">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M2 4h12M2 8h8M2 12h10"/>
+          </svg>
+          On this page
+        </button>
+      </div>
+
       <section class="article-info">
         <div class="article-content">
           <div class="article-body">{{article.body}}</div>
@@ -316,5 +325,24 @@
         </div>
       {{/if}}
     </article>
+
+    <nav class="article-toc" aria-label="On this page">
+      <p class="article-toc-heading">On this page</p>
+      <div class="article-toc-nav"></div>
+    </nav>
+  </div>
+
+  <div class="article-toc-modal" role="dialog" aria-modal="true" aria-label="On this page">
+    <div class="article-toc-modal-sheet">
+      <div class="article-toc-modal-header">
+        <p class="article-toc-modal-title">On this page</p>
+        <button type="button" class="article-toc-modal-close" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" focusable="false" viewBox="0 0 12 12" aria-hidden="true">
+            <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+          </svg>
+        </button>
+      </div>
+      <div class="article-toc-modal-nav"></div>
+    </div>
   </div>
 </div>
