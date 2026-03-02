@@ -61,6 +61,12 @@
   </div>
 
   <div class="nav-wrapper-mobile">
+    <button class="search-button-mobile" aria-label="{{t 'search'}}" aria-expanded="false" aria-controls="mobile-search-modal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true">
+        <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+        <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+      </svg>
+    </button>
     <button class="menu-button-mobile" aria-controls="user-nav-mobile" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
       {{#if signed_in}}
         {{user_avatar class="user-avatar"}}
@@ -109,3 +115,15 @@
   </div>
 
 </header>
+
+<div id="mobile-search-modal" class="mobile-search-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-label="{{t 'search'}}">
+  <div class="mobile-search-modal-inner">
+    {{!-- .header-search is moved here by JS on open --}}
+    <button class="mobile-search-close" aria-label="Cancel">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" focusable="false" viewBox="0 0 12 12" aria-hidden="true">
+        <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+      </svg>
+    </button>
+  </div>
+  <div class="mobile-search-backdrop"></div>
+</div>
