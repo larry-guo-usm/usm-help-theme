@@ -1,16 +1,24 @@
 /***** Homepage *****/
 
-.section {
-  @include tablet {
-    margin-bottom: 60px;
-  }
-
-  margin-bottom: 40px;
+.home-section h2 {
+  text-align: center;
 }
 
-.home-section h2 {
-  margin-bottom: 10px;
-  text-align: center;
+/***** Search *****/
+.home-search {
+  max-width: 600px;
+  margin: 32px auto;
+  .search {
+    border-color: #dde1e7;
+
+    &:hover {
+      border-color: #a0a9b8;
+    }
+
+    &:focus-within {
+      border-color: $brand_color;
+    }
+  }
 }
 
 /***** Home cards *****/
