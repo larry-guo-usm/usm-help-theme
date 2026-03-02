@@ -14,7 +14,7 @@ $font-size-small: 13px;
 $font-size-smaller: 11px;
 
 $high-contrast-border-color: #848F99; // maintains a 3:1 contrast ratio with default background color (#FFF). Use for controls and inputs
-$low-contrast-border-color: #ddd; // less than 3:1 contrast ratio with default background color. Use for elements that do not require user interaction
+$low-contrast-border-color: #E1E3E6; // less than 3:1 contrast ratio with default background color. Use for elements that do not require user interaction
 $menu-border-color: #d8dcde;
 
 $button-color: $brand_color;
@@ -26,7 +26,7 @@ $field-text-focus-color: #555;
 // Breakpoints variables
 $tablet-width: 768px;
 $desktop-width: 1024px;
-$max-width-container: 1160px;
+$max-width-container: 1392px;
 
 $font-weight-semibold: 600;
 

@@ -13,11 +13,6 @@
     overflow-y: auto;
     align-self: flex-start;
     padding: 24px 0 24px 16px;
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
 
   &-heading {

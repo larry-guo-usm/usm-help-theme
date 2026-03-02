@@ -6,13 +6,20 @@
   z-index: 100;
   background-color: $background_color;
   border-bottom: 1px solid $low-contrast-border-color;
-  align-items: center;
-  display: flex;
   height: $header-height;
-  justify-content: space-between;
-  padding: 0 20px;
   width: 100%;
   box-sizing: border-box;
+}
+
+.header-inner {
+  max-width: $max-width-container;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  position: relative;
 }
 
 .logo img {
@@ -37,14 +44,20 @@
   @media (max-width: #{$desktop-width - 1px}) {
     &:not(.in-modal) { display: none; }
   }
-  flex: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
   max-width: 480px;
-  margin: 0 20px;
 
   &.in-modal {
+    position: static;
+    left: auto;
+    transform: none;
     flex: 1;
     max-width: none;
     margin: 0;
+    width: auto;
   }
 
   .search {
