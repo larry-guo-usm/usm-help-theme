@@ -12,6 +12,7 @@
 
   &-title {
     margin-top: 0;
+    padding-left: 10px;
   }
 
   &-toggle {
@@ -74,21 +75,251 @@
   }
 }
 
+.sidebar-section-picker {
+  @include desktop {
+    display: none;
+  }
+
+  position: relative;
+  margin-bottom: 12px;
+
+  &-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 12px;
+    background: $primary-shade;
+    border: 1px solid $low-contrast-border-color;
+    border-radius: 6px;
+    font-size: $font-size-base;
+    font-weight: $font-weight-semibold;
+    color: $text_color;
+    cursor: pointer;
+    text-align: left;
+
+    &:hover {
+      background: $secondary-shade;
+    }
+  }
+
+  &-chevron {
+    flex-shrink: 0;
+    margin-left: 8px;
+    transition: transform 0.15s ease;
+  }
+
+  &.is-open &-chevron {
+    transform: rotate(180deg);
+  }
+
+  &-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: $background_color;
+    border: 1px solid $low-contrast-border-color;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    padding: 4px;
+  }
+
+  &.is-open &-dropdown {
+    display: block;
+  }
+
+  &-option {
+    display: block;
+    padding: 8px 10px;
+    font-size: $font-size-base;
+    color: $secondary-text-color;
+    text-decoration: none;
+    border-radius: 4px;
+
+    &:hover {
+      background: $primary-shade;
+      color: $text_color;
+      text-decoration: none;
+    }
+
+    &.is-active {
+      background: $secondary-shade;
+      color: $text_color;
+      font-weight: $font-weight-semibold;
+    }
+  }
+}
+
 .sidenav-item {
   display: block;
-  padding: 6px 0;
-  color: $text_color;
-  border-left: 3px solid transparent;
-  padding-left: 10px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: $secondary-text-color;
+  margin: 1px 0;
+  transition: background 0.1s ease, color 0.1s ease;
 
   &:hover {
-    color: $brand_color;
+    color: $text_color;
+    background: $primary-shade;
     text-decoration: none;
   }
 
   &.current-article {
-    border-left-color: $brand_color;
+    background: $secondary-shade;
+    color: $text_color;
+    font-weight: $font-weight-semibold;
+  }
+}
+
+/* ── Mobile sidebar drawer ── */
+
+.sidebar-mobile-bar {
+  @include desktop {
+    display: none;
+  }
+
+  position: sticky;
+  top: $header-height;
+  z-index: 98;
+  background: $background_color;
+  border-bottom: 1px solid $low-contrast-border-color;
+  padding: 0 5%;
+}
+
+.sidebar-mobile-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  background: none;
+  border: none;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $text_color;
+  cursor: pointer;
+
+  &:hover {
     color: $brand_color;
-    font-weight: 600;
+  }
+}
+
+.sidebar-drawer-header {
+  @include desktop {
+    display: none;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $low-contrast-border-color;
+}
+
+.sidebar-drawer-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: $text_color;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.sidebar-drawer-logo {
+  height: 24px;
+  width: auto;
+}
+
+.sidebar-drawer-name {
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  color: $text_color;
+}
+
+.sidebar-mobile-close {
+  @include desktop {
+    display: none;
+  }
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $secondary-text-color;
+  border-radius: 4px;
+
+  &:hover {
+    color: $text_color;
+  }
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+
+  &.is-open {
+    display: block;
+  }
+}
+
+body.sidebar-drawer-open {
+  overflow: hidden;
+}
+
+/* Article sidebar as off-canvas drawer below desktop */
+@media (max-width: #{$desktop-width - 1px}) {
+  .article-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: min(300px, 85vw);
+    height: 100vh;
+    z-index: 200;
+    background: $background_color;
+    overflow-y: auto;
+    padding: 16px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    border-top: none;
+    border-bottom: none;
+    margin-bottom: 0;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &.is-open {
+      transform: translateX(0);
+    }
+  }
+
+  /* Always expand the article list inside the drawer */
+  .article-sidebar .collapsible-sidebar {
+    max-height: none;
+    overflow: visible;
+
+    &-toggle {
+      display: none;
+    }
+
+    &-body {
+      display: block;
+    }
   }
 }

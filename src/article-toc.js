@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const mobileTrigger = document.querySelector(".article-toc-mobile-trigger");
   const mobileBtn = document.querySelector(".article-toc-mobile-btn");
   const modal = document.querySelector(".article-toc-modal");
-  const modalClose = document.querySelector(".article-toc-modal-close");
   const mobileTocNav = document.querySelector(".article-toc-modal-nav");
 
   if (!articleBody || !tocNav) return;
@@ -32,6 +31,24 @@ document.addEventListener("DOMContentLoaded", function () {
     usedIds.add(heading.id);
   });
 
+  function getStickyOffset() {
+    let offset = 0;
+    [".header", ".sections-subnav", ".sidebar-mobile-bar"].forEach((sel) => {
+      const el = document.querySelector(sel);
+      if (el && getComputedStyle(el).display !== "none") {
+        offset += el.offsetHeight;
+      }
+    });
+    return offset + 16; // extra breathing room
+  }
+
+  function scrollToHeading(id) {
+    const target = document.getElementById(id);
+    if (!target) return;
+    const top = target.getBoundingClientRect().top + window.scrollY - getStickyOffset();
+    window.scrollTo({ top, behavior: "smooth" });
+  }
+
   function buildList(headings, onLinkClick) {
     const ul = document.createElement("ul");
     ul.className = "article-toc-list";
@@ -45,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
       a.dataset.headingId = heading.id;
       a.addEventListener("click", (e) => {
         e.preventDefault();
-        document.getElementById(heading.id)?.scrollIntoView({ behavior: "smooth" });
+        scrollToHeading(heading.id);
         if (onLinkClick) onLinkClick();
       });
       li.appendChild(a);
@@ -87,19 +104,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function openMobileModal() {
     modal?.classList.add("is-open");
-    document.body.classList.add("toc-modal-open");
+    mobileBtn?.setAttribute("aria-expanded", "true");
   }
 
   function closeMobileModal() {
     modal?.classList.remove("is-open");
-    document.body.classList.remove("toc-modal-open");
+    mobileBtn?.setAttribute("aria-expanded", "false");
   }
 
-  mobileBtn?.addEventListener("click", openMobileModal);
-  modalClose?.addEventListener("click", closeMobileModal);
-  modal?.addEventListener("click", (e) => {
-    if (e.target === modal) closeMobileModal();
+  mobileBtn?.addEventListener("click", (e) => {
+    e.stopPropagation();
+    modal?.classList.contains("is-open") ? closeMobileModal() : openMobileModal();
   });
+
+  document.addEventListener("click", (e) => {
+    if (modal?.classList.contains("is-open") && !mobileTrigger?.contains(e.target)) {
+      closeMobileModal();
+    }
+  });
+
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") closeMobileModal();
   });

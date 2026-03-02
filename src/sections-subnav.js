@@ -28,8 +28,11 @@ window.addEventListener("DOMContentLoaded", function () {
       });
   }
 
+  var currentSection = null;
+
   cachedFetch(base + "/sections/" + currentSectionId + ".json")
     .then(function (data) {
+      currentSection = data.section;
       var categoryId = data.section.category_id;
       return Promise.all([
         cachedFetch(
@@ -56,6 +59,7 @@ window.addEventListener("DOMContentLoaded", function () {
         }
       });
 
+      // Populate desktop subnav
       var inner = nav.querySelector(".sections-subnav-inner");
       sectionsData.sections.forEach(function (s) {
         var a = document.createElement("a");
@@ -65,6 +69,39 @@ window.addEventListener("DOMContentLoaded", function () {
           "sections-subnav-link" +
           (s.id === currentSectionId ? " is-active" : "");
         inner.appendChild(a);
+      });
+
+      // Populate sidebar section picker (below desktop breakpoint)
+      var picker = document.getElementById("sidebar-section-picker");
+      if (!picker) return;
+
+      var label = picker.querySelector(".sidebar-section-picker-label");
+      if (label && currentSection) label.textContent = currentSection.name;
+
+      var dropdown = picker.querySelector(".sidebar-section-picker-dropdown");
+      sectionsData.sections.forEach(function (s) {
+        var a = document.createElement("a");
+        a.href = firstArticleUrl[s.id] || s.html_url;
+        a.textContent = s.name;
+        a.className =
+          "sidebar-section-picker-option" +
+          (s.id === currentSectionId ? " is-active" : "");
+        dropdown.appendChild(a);
+      });
+
+      var btn = picker.querySelector(".sidebar-section-picker-btn");
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        var isOpen = btn.getAttribute("aria-expanded") === "true";
+        btn.setAttribute("aria-expanded", String(!isOpen));
+        picker.classList.toggle("is-open", !isOpen);
+      });
+
+      document.addEventListener("click", function (e) {
+        if (!picker.contains(e.target)) {
+          btn.setAttribute("aria-expanded", "false");
+          picker.classList.remove("is-open");
+        }
       });
     })
     .catch(function (err) {

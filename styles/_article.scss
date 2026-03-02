@@ -1,5 +1,11 @@
 /***** Sections subnav *****/
 .sections-subnav {
+  display: none;
+
+  @include desktop {
+    display: block;
+  }
+
   position: sticky;
   top: $header-height;
   z-index: 99;
@@ -192,6 +198,7 @@
       max-height: calc(100vh - #{$header-height} - #{$subnav-height});
       overflow-y: auto;
       align-self: flex-start;
+      padding-top: 20px;
     }
 
     border-bottom: 1px solid $low-contrast-border-color;
@@ -316,5 +323,12 @@
 
   li {
     margin-bottom: 15px;
+  }
+}
+
+// Article page: remove left padding so sidebar is flush to the left edge
+.article-page-container {
+  @include desktop {
+    padding-left: 0;
   }
 }

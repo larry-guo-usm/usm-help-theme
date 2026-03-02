@@ -750,8 +750,11 @@
         });
     }
 
+    var currentSection = null;
+
     cachedFetch(base + "/sections/" + currentSectionId + ".json")
       .then(function (data) {
+        currentSection = data.section;
         var categoryId = data.section.category_id;
         return Promise.all([
           cachedFetch(
@@ -778,6 +781,7 @@
           }
         });
 
+        // Populate desktop subnav
         var inner = nav.querySelector(".sections-subnav-inner");
         sectionsData.sections.forEach(function (s) {
           var a = document.createElement("a");
@@ -787,6 +791,39 @@
             "sections-subnav-link" +
             (s.id === currentSectionId ? " is-active" : "");
           inner.appendChild(a);
+        });
+
+        // Populate sidebar section picker (below desktop breakpoint)
+        var picker = document.getElementById("sidebar-section-picker");
+        if (!picker) return;
+
+        var label = picker.querySelector(".sidebar-section-picker-label");
+        if (label && currentSection) label.textContent = currentSection.name;
+
+        var dropdown = picker.querySelector(".sidebar-section-picker-dropdown");
+        sectionsData.sections.forEach(function (s) {
+          var a = document.createElement("a");
+          a.href = firstArticleUrl[s.id] || s.html_url;
+          a.textContent = s.name;
+          a.className =
+            "sidebar-section-picker-option" +
+            (s.id === currentSectionId ? " is-active" : "");
+          dropdown.appendChild(a);
+        });
+
+        var btn = picker.querySelector(".sidebar-section-picker-btn");
+        btn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          var isOpen = btn.getAttribute("aria-expanded") === "true";
+          btn.setAttribute("aria-expanded", String(!isOpen));
+          picker.classList.toggle("is-open", !isOpen);
+        });
+
+        document.addEventListener("click", function (e) {
+          if (!picker.contains(e.target)) {
+            btn.setAttribute("aria-expanded", "false");
+            picker.classList.remove("is-open");
+          }
         });
       })
       .catch(function (err) {
@@ -892,10 +929,9 @@
     const articleBody = document.querySelector(".article-body");
     const tocNav = document.querySelector(".article-toc-nav");
     document.querySelector(".article-toc");
-    document.querySelector(".article-toc-mobile-trigger");
+    const mobileTrigger = document.querySelector(".article-toc-mobile-trigger");
     const mobileBtn = document.querySelector(".article-toc-mobile-btn");
     const modal = document.querySelector(".article-toc-modal");
-    const modalClose = document.querySelector(".article-toc-modal-close");
     const mobileTocNav = document.querySelector(".article-toc-modal-nav");
 
     if (!articleBody || !tocNav) return;
@@ -922,6 +958,24 @@
       usedIds.add(heading.id);
     });
 
+    function getStickyOffset() {
+      let offset = 0;
+      [".header", ".sections-subnav", ".sidebar-mobile-bar"].forEach((sel) => {
+        const el = document.querySelector(sel);
+        if (el && getComputedStyle(el).display !== "none") {
+          offset += el.offsetHeight;
+        }
+      });
+      return offset + 16; // extra breathing room
+    }
+
+    function scrollToHeading(id) {
+      const target = document.getElementById(id);
+      if (!target) return;
+      const top = target.getBoundingClientRect().top + window.scrollY - getStickyOffset();
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+
     function buildList(headings, onLinkClick) {
       const ul = document.createElement("ul");
       ul.className = "article-toc-list";
@@ -935,7 +989,7 @@
         a.dataset.headingId = heading.id;
         a.addEventListener("click", (e) => {
           e.preventDefault();
-          document.getElementById(heading.id)?.scrollIntoView({ behavior: "smooth" });
+          scrollToHeading(heading.id);
           if (onLinkClick) onLinkClick();
         });
         li.appendChild(a);
@@ -977,21 +1031,61 @@
 
     function openMobileModal() {
       modal?.classList.add("is-open");
-      document.body.classList.add("toc-modal-open");
+      mobileBtn?.setAttribute("aria-expanded", "true");
     }
 
     function closeMobileModal() {
       modal?.classList.remove("is-open");
-      document.body.classList.remove("toc-modal-open");
+      mobileBtn?.setAttribute("aria-expanded", "false");
     }
 
-    mobileBtn?.addEventListener("click", openMobileModal);
-    modalClose?.addEventListener("click", closeMobileModal);
-    modal?.addEventListener("click", (e) => {
-      if (e.target === modal) closeMobileModal();
+    mobileBtn?.addEventListener("click", (e) => {
+      e.stopPropagation();
+      modal?.classList.contains("is-open") ? closeMobileModal() : openMobileModal();
     });
+
+    document.addEventListener("click", (e) => {
+      if (modal?.classList.contains("is-open") && !mobileTrigger?.contains(e.target)) {
+        closeMobileModal();
+      }
+    });
+
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeMobileModal();
+    });
+  });
+
+  window.addEventListener("DOMContentLoaded", function () {
+    var openBtn = document.getElementById("sidebar-mobile-open");
+    var sidebar = document.getElementById("article-sidebar");
+    var overlay = document.getElementById("sidebar-overlay");
+    var closeBtn = document.getElementById("sidebar-mobile-close");
+
+    if (!openBtn || !sidebar || !overlay) return;
+
+    function openDrawer() {
+      sidebar.classList.add("is-open");
+      overlay.classList.add("is-open");
+      document.body.classList.add("sidebar-drawer-open");
+      openBtn.setAttribute("aria-expanded", "true");
+    }
+
+    function closeDrawer() {
+      sidebar.classList.remove("is-open");
+      overlay.classList.remove("is-open");
+      document.body.classList.remove("sidebar-drawer-open");
+      openBtn.setAttribute("aria-expanded", "false");
+    }
+
+    openBtn.addEventListener("click", openDrawer);
+    overlay.addEventListener("click", closeDrawer);
+
+    if (closeBtn) {
+      closeBtn.addEventListener("click", closeDrawer);
+    }
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeDrawer();
     });
   });
 

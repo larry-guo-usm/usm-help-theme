@@ -34,7 +34,7 @@
 }
 
 .header-search {
-  @include mobile {
+  @media (max-width: #{$desktop-width - 1px}) {
     &:not(.in-modal) { display: none; }
   }
   flex: 1;
@@ -45,6 +45,18 @@
     flex: 1;
     max-width: none;
     margin: 0;
+  }
+
+  .search {
+    border-color: #dde1e7;
+
+    &:hover {
+      border-color: #a0a9b8;
+    }
+
+    &:focus-within {
+      border-color: $brand_color;
+    }
   }
 }
 

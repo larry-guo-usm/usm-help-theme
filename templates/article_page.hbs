@@ -3,10 +3,39 @@
   <div class="sections-subnav-inner container"></div>
 </nav>
 
-<div class="container">
+<div class="sidebar-mobile-bar">
+  <button type="button" class="sidebar-mobile-open" id="sidebar-mobile-open" aria-expanded="false" aria-controls="article-sidebar">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" aria-hidden="true">
+      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M2 4h12M2 8h12M2 12h12"/>
+    </svg>
+    <span>{{section.name}}</span>
+  </button>
+</div>
+
+<div class="container article-page-container">
 
   <div class="article-container" id="article-container">
-    <aside class="article-sidebar" aria-labelledby="section-articles-title">
+    <aside class="article-sidebar" id="article-sidebar" aria-labelledby="section-articles-title">
+      <div class="sidebar-drawer-header">
+        {{#link 'help_center' class='sidebar-drawer-brand'}}
+          <img src="{{settings.logo}}" alt="{{help_center.name}}" class="sidebar-drawer-logo" />
+          <span class="sidebar-drawer-name">{{help_center.name}}</span>
+        {{/link}}
+        <button type="button" class="sidebar-mobile-close" id="sidebar-mobile-close" aria-label="Close navigation">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" focusable="false" viewBox="0 0 12 12" aria-hidden="true">
+            <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
+          </svg>
+        </button>
+      </div>
+      <div class="sidebar-section-picker" id="sidebar-section-picker">
+        <button type="button" class="sidebar-section-picker-btn" aria-expanded="false">
+          <span class="sidebar-section-picker-label"></span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" aria-hidden="true" class="sidebar-section-picker-chevron">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" d="M3 4.5l2.6 2.6c.2.2.5.2.7 0L9 4.5"/>
+          </svg>
+        </button>
+        <div class="sidebar-section-picker-dropdown"></div>
+      </div>
       {{#if settings.show_articles_in_section}}
         <div class="collapsible-sidebar">
           <button type="button" class="collapsible-sidebar-toggle" aria-labelledby="section-articles-title" aria-expanded="false">
@@ -84,12 +113,17 @@
       </header>
 
       <div class="article-toc-mobile-trigger">
-        <button type="button" class="article-toc-mobile-btn" aria-label="{{t 'on_this_page'}}">
-          <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" focusable="false" viewBox="0 0 16 16" aria-hidden="true">
-            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M2 4h12M2 8h8M2 12h10"/>
-          </svg>
-          On this page
-        </button>
+        <div class="article-toc-popup-wrapper">
+          <button type="button" class="article-toc-mobile-btn" aria-label="{{t 'on_this_page'}}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" aria-hidden="true">
+              <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M2 4h12M2 8h8M2 12h10"/>
+            </svg>
+          </button>
+          <div class="article-toc-modal" role="dialog" aria-modal="true" aria-label="On this page">
+            <p class="article-toc-modal-title">On this page</p>
+            <div class="article-toc-modal-nav"></div>
+          </div>
+        </div>
       </div>
 
       <section class="article-info">
@@ -332,17 +366,6 @@
     </nav>
   </div>
 
-  <div class="article-toc-modal" role="dialog" aria-modal="true" aria-label="On this page">
-    <div class="article-toc-modal-sheet">
-      <div class="article-toc-modal-header">
-        <p class="article-toc-modal-title">On this page</p>
-        <button type="button" class="article-toc-modal-close" aria-label="Close">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" focusable="false" viewBox="0 0 12 12" aria-hidden="true">
-            <path stroke="currentColor" stroke-linecap="round" d="M3 9l6-6m0 6L3 3"/>
-          </svg>
-        </button>
-      </div>
-      <div class="article-toc-modal-nav"></div>
-    </div>
-  </div>
 </div>
+
+<div class="sidebar-overlay" id="sidebar-overlay"></div>

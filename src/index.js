@@ -10,3 +10,4 @@ import "./sections-subnav";
 import "./home-section-links";
 import "./mobile-search";
 import "./article-toc";
+import "./article-sidebar";
