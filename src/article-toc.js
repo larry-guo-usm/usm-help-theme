@@ -12,12 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const headings = Array.from(articleBody.querySelectorAll("h2, h3, h4"));
 
-  if (headings.length < 2) {
-    if (tocWrapper) tocWrapper.style.display = "none";
-    if (mobileTrigger) mobileTrigger.style.display = "none";
-    return;
-  }
-
   function slugify(text) {
     return text
       .toLowerCase()
@@ -86,8 +80,10 @@ document.addEventListener("DOMContentLoaded", function () {
     setActive(current.id);
   }
 
-  window.addEventListener("scroll", updateActive, { passive: true });
-  updateActive();
+  if (headings.length > 0) {
+    window.addEventListener("scroll", updateActive, { passive: true });
+    updateActive();
+  }
 
   function openMobileModal() {
     modal?.classList.add("is-open");

@@ -891,8 +891,8 @@
   document.addEventListener("DOMContentLoaded", function () {
     const articleBody = document.querySelector(".article-body");
     const tocNav = document.querySelector(".article-toc-nav");
-    const tocWrapper = document.querySelector(".article-toc");
-    const mobileTrigger = document.querySelector(".article-toc-mobile-trigger");
+    document.querySelector(".article-toc");
+    document.querySelector(".article-toc-mobile-trigger");
     const mobileBtn = document.querySelector(".article-toc-mobile-btn");
     const modal = document.querySelector(".article-toc-modal");
     const modalClose = document.querySelector(".article-toc-modal-close");
@@ -901,12 +901,6 @@
     if (!articleBody || !tocNav) return;
 
     const headings = Array.from(articleBody.querySelectorAll("h2, h3, h4"));
-
-    if (headings.length < 2) {
-      if (tocWrapper) tocWrapper.style.display = "none";
-      if (mobileTrigger) mobileTrigger.style.display = "none";
-      return;
-    }
 
     function slugify(text) {
       return text
@@ -976,8 +970,10 @@
       setActive(current.id);
     }
 
-    window.addEventListener("scroll", updateActive, { passive: true });
-    updateActive();
+    if (headings.length > 0) {
+      window.addEventListener("scroll", updateActive, { passive: true });
+      updateActive();
+    }
 
     function openMobileModal() {
       modal?.classList.add("is-open");
