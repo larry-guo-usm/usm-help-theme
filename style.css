@@ -3581,7 +3581,7 @@ ul {
   display: block;
   padding: 6px 10px;
   border-radius: 6px;
-  color: lighten($text_color, 20%);
+  color: $text_color;
   margin: 1px 0;
   transition: background 0.1s ease, color 0.1s ease;
 }
