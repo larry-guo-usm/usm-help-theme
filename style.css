@@ -189,7 +189,7 @@ template {
 body {
   background-color: $background_color;
   color: $text_color;
-  font-family: $text_font;
+  font-family: "CustomBodyFont", $text_font;
   font-size: 15px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -206,7 +206,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: $heading_font;
+  font-family: "CustomHeadingFont", $heading_font;
   margin-top: 0;
 }
 
@@ -2727,7 +2727,7 @@ ul {
   word-break: break-word;
   word-wrap: break-word;
   display: flow-root;
-  font-family: $text_font;
+  font-family: "CustomBodyFont", $text_font;
   line-height: 1.6;
   overflow-x: auto;
 }
@@ -3037,7 +3037,7 @@ ul {
   content: attr(data-follower-count);
   color: $brand_color;
   display: inline-block;
-  font-family: $heading_font;
+  font-family: "CustomHeadingFont", $heading_font;
   margin-left: 15px;
   padding-left: 10px;
   position: absolute;
@@ -3269,7 +3269,7 @@ ul {
   margin-bottom: 30px;
 }
 .post-content {
-  font-family: $text_font;
+  font-family: "CustomBodyFont", $text_font;
   line-height: 1.6;
   word-break: break-word;
 }

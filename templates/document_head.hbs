@@ -1,4 +1,22 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+{{#if settings.heading_font_file}}
+<style>
+  @font-face {
+    font-family: "CustomHeadingFont";
+    src: url("{{settings.heading_font_file}}");
+    font-display: swap;
+  }
+</style>
+{{/if}}
+{{#if settings.text_font_file}}
+<style>
+  @font-face {
+    font-family: "CustomBodyFont";
+    src: url("{{settings.text_font_file}}");
+    font-display: swap;
+  }
+</style>
+{{/if}}
 <!-- Make the translated search clear button label available for use in JS -->
 <!-- See buildClearSearchButton() in script.js -->
 <script type="text/javascript">window.searchClearButtonLabelLocalized = "{{t 'search_clear'}}";</script>

@@ -150,7 +150,7 @@
   &-body {
     @include text-overflow;
     @include content-body;
-    font-family: $text_font;
+    font-family: "CustomBodyFont", $text_font;
     line-height: 1.6;
     overflow-x: auto;
   }

@@ -130,7 +130,7 @@
       content: attr(data-follower-count);
       color: $button-color;
       display: inline-block;
-      font-family: $heading_font;
+      font-family: "CustomHeadingFont", $heading_font;
       margin-left: 15px;
       padding-left: 10px;
       position: absolute;

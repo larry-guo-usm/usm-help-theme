@@ -34,6 +34,8 @@
   "follow_topic_label": "Follow",
   "fonts_group_label": "Fonts",
   "heading_font_description": "Font for headings",
+  "heading_font_file_description": "Upload a custom font file for headings (woff2, woff, otf, ttf). Overrides the font list selection above.",
+  "heading_font_file_label": "Heading Font File",
   "heading_font_label": "Heading Font",
   "home_card_1_description_label": "Card 1 - Description",
   "home_card_1_icon_label": "Card 1 - Icon",
@@ -86,6 +88,8 @@
   "text_color_description": "Text color for body and heading elements",
   "text_color_label": "Text color",
   "text_font_description": "Font for body text",
+  "text_font_file_description": "Upload a custom font file for body text (woff2, woff, otf, ttf). Overrides the font list selection above.",
+  "text_font_file_label": "Body Font File",
   "text_font_label": "Text Font",
   "visited_link_color_description": "Text color for visited link elements",
   "visited_link_color_label": "Visited link color"
