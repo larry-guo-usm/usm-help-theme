@@ -326,9 +326,8 @@
   }
 }
 
-// Article page: remove left padding so sidebar is flush to the left edge
 .article-page-container {
   @include desktop {
-    padding-left: 0;
+    padding-left: 24px;
   }
 }

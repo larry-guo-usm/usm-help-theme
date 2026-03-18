@@ -2344,7 +2344,7 @@ ul {
 
 @media (min-width: 1024px) {
   .article-page-container {
-    padding-left: 0;
+    padding-left: 24px;
   }
 }
 
