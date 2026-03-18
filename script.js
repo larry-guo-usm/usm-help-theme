@@ -1007,6 +1007,10 @@
     function scrollToHeading(id) {
       const target = document.getElementById(id);
       if (!target) return;
+      scrollLockId = id;
+      clearTimeout(scrollLockTimer);
+      scrollLockTimer = setTimeout(() => { scrollLockId = null; }, 1000);
+      setActive(id);
       const top = target.getBoundingClientRect().top + window.scrollY - getStickyOffset();
       window.scrollTo({ top, behavior: "smooth" });
     }
@@ -1039,6 +1043,8 @@
     }
 
     let activeId = null;
+    let scrollLockId = null;
+    let scrollLockTimer = null;
 
     function setActive(id) {
       if (activeId === id) return;
@@ -1052,6 +1058,10 @@
     }
 
     function updateActive() {
+      if (scrollLockId !== null) {
+        setActive(scrollLockId);
+        return;
+      }
       let current = headings[0];
       for (const h of headings) {
         if (h.getBoundingClientRect().top <= 130) current = h;
@@ -1062,6 +1072,23 @@
     if (headings.length > 0) {
       window.addEventListener("scroll", updateActive, { passive: true });
       updateActive();
+    }
+
+    // Correct scroll position when page loads with a hash (browser scrolls to top of element
+    // without accounting for sticky header/subnav).
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      const target = document.getElementById(id);
+      if (target) {
+        // Use requestAnimationFrame to run after the browser's initial hash scroll settles.
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            const top = target.getBoundingClientRect().top + window.scrollY - getStickyOffset();
+            window.scrollTo({ top, behavior: "instant" });
+            setActive(id);
+          });
+        });
+      }
     }
 
     function openMobileModal() {
