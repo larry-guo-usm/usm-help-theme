@@ -11,3 +11,4 @@ import "./home-section-links";
 import "./mobile-search";
 import "./article-toc";
 import "./article-sidebar";
+import "./error-page-links";

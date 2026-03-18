@@ -315,11 +315,60 @@ ul {
   max-width: 1392px;
   margin: 0 auto;
   padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 32px;
+  padding-bottom: 32px;
 }
 @media (min-width: 1392px) {
   .error-page {
     padding: 0;
   }
+}
+@media (max-width: 768px) {
+  .error-page {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+}
+.error-page h1 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+.error-page p {
+  max-width: 480px;
+  color: $text_color;
+  margin-bottom: 32px;
+}
+.error-page a:not(.blocks-item-link) {
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: $brand_color;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.error-page a:not(.blocks-item-link):hover {
+  opacity: 0.9;
+}
+.error-page .error-page-help {
+  width: 100%;
+  margin-top: 0;
+}
+.error-page .error-page-help h2 {
+  font-size: 1.5rem;
+  margin: 0 0 8px;
+}
+.error-page .error-page-help p {
+  margin: 0 0 20px;
+  max-width: none;
+}
+.error-page .error-page-sections {
+  width: 100%;
+  margin-top: 24px;
 }
 
 .visibility-hidden {

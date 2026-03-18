@@ -1,21 +1,44 @@
 <div class="container-divider"></div>
 <div id="main-content" class="error-page">
-  <h1>{{t 'oops'}}</h1>
-
   {{#is error 'unauthorized'}}
+    <h1>{{t 'oops'}}</h1>
     <h2>{{link 'sign_in'}}</h2>
   {{/is}}
 
   {{#is error 'forbidden'}}
+    <h1>{{t 'oops'}}</h1>
     <h2>{{t 'not_authorized'}}</h2>
   {{/is}}
 
   {{#is error 'not_found'}}
-    <h2>{{t 'nonexistent_page'}}</h2>
-    <p>{{t 'mistyped_address_or_moved_page'}}</p>
-  {{/is}}
+  <div class="error-page-help">
+    <h1>We couldn't find that article</h1>
+    <p>It could be because we recently updated our help center to make it more readable and usable. <br>Try searching for what you need or checking out one of these topics.</p>
+    <div class="home-search">
+      <div class="search-container">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" focusable="false" viewBox="0 0 12 12" class="search-icon" aria-hidden="true">
+          <circle cx="4.5" cy="4.5" r="4" fill="none" stroke="currentColor"/>
+          <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
+        </svg>
+        {{search submit=false instant=settings.instant_search class='search search-full'}}
+      </div>
+    </div>
+  </div>
 
-  {{#link 'help_center'}}
-    {{t 'back_to_homepage'}}
-  {{/link}}
+  <div class="error-page-sections categories blocks">
+    <ul class="blocks-list"
+      data-icon1="{{settings.home_card_1_icon}}"
+      data-icon2="{{settings.home_card_2_icon}}"
+      data-icon3="{{settings.home_card_3_icon}}"
+      data-icon4="{{settings.home_card_4_icon}}"
+      data-icon5="{{settings.home_card_5_icon}}"
+      data-icon6="{{settings.home_card_6_icon}}"
+      data-desc1="{{settings.home_card_1_description}}"
+      data-desc2="{{settings.home_card_2_description}}"
+      data-desc3="{{settings.home_card_3_description}}"
+      data-desc4="{{settings.home_card_4_description}}"
+      data-desc5="{{settings.home_card_5_description}}"
+      data-desc6="{{settings.home_card_6_description}}"></ul>
+  </div>
+  {{/is}}
 </div>
