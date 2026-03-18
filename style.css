@@ -762,22 +762,22 @@ ul {
 .mobile-search-modal {
   display: none;
   position: fixed;
-  inset: 0;
+  top: 71px;
+  left: 0;
+  right: 0;
   z-index: 200;
+  pointer-events: none;
 }
 .mobile-search-modal.is-open {
   display: block;
 }
 .mobile-search-modal-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  display: none;
 }
 .mobile-search-modal-inner {
   position: relative;
   z-index: 1;
+  pointer-events: auto;
   display: flex;
   align-items: center;
   gap: 8px;

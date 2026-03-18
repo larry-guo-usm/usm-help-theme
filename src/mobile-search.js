@@ -4,8 +4,8 @@ window.addEventListener("DOMContentLoaded", function () {
   var headerSearch = document.querySelector(".header-search");
   if (!modal || !openBtn || !headerSearch) return;
 
-  var header = document.querySelector(".header");
-  // Record where to put it back: the element currently after .header-search
+  // Record where to put it back: original parent and sibling
+  var originalParent = headerSearch.parentElement;
   var originalNextSibling = headerSearch.nextElementSibling;
 
   var inner = modal.querySelector(".mobile-search-modal-inner");
@@ -20,7 +20,6 @@ window.addEventListener("DOMContentLoaded", function () {
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     openBtn.setAttribute("aria-expanded", "true");
-    document.body.style.overflow = "hidden";
 
     var input = headerSearch.querySelector("input[type='search']");
     if (input) setTimeout(function () { input.focus(); }, 50);
@@ -28,13 +27,12 @@ window.addEventListener("DOMContentLoaded", function () {
 
   function closeModal() {
     // Return the search widget to its original position in the header
-    header.insertBefore(headerSearch, originalNextSibling);
+    originalParent.insertBefore(headerSearch, originalNextSibling);
     headerSearch.classList.remove("in-modal");
 
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     openBtn.setAttribute("aria-expanded", "false");
-    document.body.style.overflow = "";
     openBtn.focus();
   }
 
