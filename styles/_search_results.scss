@@ -61,7 +61,7 @@
         .label {
           font-style: normal;
           font-weight: 600;
-          font-size: 12px;
+          font-size: $font-size-xs;
           line-height: 24px;
           text-align: center;
           letter-spacing: -0.000427656px;
@@ -122,7 +122,7 @@
   }
 
   &-subheading {
-    font-size: 18px;
+    font-size: $font-size-md;
     font-weight: $font-weight-semibold;
   }
 
@@ -145,7 +145,7 @@
     .headline {
       color: #2F3941;
       font-weight: 400;
-      font-size: 18px;
+      font-size: $font-size-md;
       line-height: 24px;
       letter-spacing: -0.45px;
     }
@@ -153,7 +153,7 @@
     .action-prompt {
       color: #68737D;
       font-weight: 400;
-      font-size: 14px;
+      font-size: $font-size-base;
       line-height: 20px;
       letter-spacing: -0.154px;
 
@@ -176,14 +176,14 @@
   }
 
   &-title {
-    font-size: $font-size-bigger;
+    font-size: $font-size-base;
     margin-bottom: 0;
   }
 
   &-votes,
   &-meta-count {
     color: $secondary-text-color;
-    font-size: $font-size-small;
+    font-size: $font-size-xs;
 
     &-icon {
       color: $brand_color;

@@ -32,10 +32,10 @@
 }
 
 .logo a {
-  @include mobile {font-size: 18px;}
+  @include mobile {font-size: $font-size-md;}
   display: inline-block;
   font-weight: 600;
-  font-size: 24px;
+  font-size: $font-size-lg;
 }
 
 .logo a:hover, .logo a:focus, .logo a:active {
@@ -196,7 +196,7 @@
     border: 0;
     color: $link_color;
     display: none;
-    font-size: 14px;
+    font-size: $font-size-base;
     padding: 0 20px 0 0;
     width: auto;
 
@@ -311,7 +311,7 @@
       line-height: 1.5;
 
       .my-profile-tooltip {
-        font-size: 12px;
+        font-size: $font-size-xs;
         color: #68737D;
       }
     }
@@ -337,7 +337,7 @@
   background-color: black;
   color: white;
   display: flex;
-  font-size: 14px;
+  font-size: $font-size-base;
   justify-content: center;
   left: -999px;
   margin: 20px;

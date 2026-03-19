@@ -17,7 +17,7 @@
 
 .meta-data {
   color: $secondary-text-color;
-  font-size: $font-size-small;
+  font-size: $font-size-xs;
 
   &:not(:last-child)::after {
     content: "\00B7";

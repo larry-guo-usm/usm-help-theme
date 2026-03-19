@@ -19,7 +19,7 @@
   }
 
   &-item-parent {
-    font-size: $font-size-bigger;
+    font-size: $font-size-base;
     font-weight: 600;
   }
 
@@ -36,7 +36,7 @@
   }
 
   &-item-link {
-    font-size: 14px;
+    font-size: $font-size-base;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -58,7 +58,7 @@
   &-item-time,
   &-item-comment {
     display: inline-block;
-    font-size: $font-size-small;
+    font-size: $font-size-xs;
   }
 
   &-item-comment {

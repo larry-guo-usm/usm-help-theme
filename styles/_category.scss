@@ -30,7 +30,7 @@
 
   &-title {
     margin-bottom: 0;
-    font-size: 18px;
+    font-size: $font-size-md;
     font-weight: $font-weight-semibold;
 
     a { color: $text_color; }
@@ -44,7 +44,7 @@
 
 .article-list {
   &-item {
-    font-size: $font-size-bigger;
+    font-size: $font-size-base;
     padding: 15px 0;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -55,5 +55,5 @@
 
 .icon-star {
   color: $brand_color;
-  font-size: 18px;
+  font-size: $font-size-md;
 }

@@ -29,20 +29,20 @@ h6 {
 }
 
 h1 {
-  font-size: 32px;
+  font-size: $font-size-xl;
 }
 
 h2 {
-  font-size: 22px;
+  font-size: $font-size-lg;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: $font-size-md;
   font-weight: $font-weight-semibold;
 }
 
 h4 {
-  font-size: 16px;
+  font-size: $font-size-base;
 }
 
 a {
@@ -64,7 +64,7 @@ a {
   input,
   textarea {
     color: #000;
-    font-size: $input-font-size;
+    font-size: $font-size-base;
   }
   
   input {

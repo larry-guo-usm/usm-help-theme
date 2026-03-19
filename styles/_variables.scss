@@ -7,11 +7,13 @@ $secondary-text-color: zass-lighten($text_color, 20%);
 $primary-shade: zass-darken($background_color, 3%); //#f8f8f8 for the default background_color
 $secondary-shade: zass-darken($background_color, 5%); //#f2f2f2 for the default background_color
 
-$font-size-bigger: 16px;
-$font-size-base: 15px;
-$font-size-navigation: 14px;
-$font-size-small: 13px;
-$font-size-smaller: 11px;
+$font-size-xs:   12px;  // Labels, badges, captions, small UI elements
+$font-size-base: 16px;  // Body text, navigation, descriptions
+$font-size-md:   20px;  // Subheadings, section titles
+$font-size-lg:   24px;  // Section headings
+$font-size-xl:   32px;  // Page headings (h1)
+$font-size-2xl:  52px;  // Hero title
+$font-size-3xl:  72px;  // Hero title large
 
 $high-contrast-border-color: #848F99; // maintains a 3:1 contrast ratio with default background color (#FFF). Use for controls and inputs
 $low-contrast-border-color: #E1E3E6; // less than 3:1 contrast ratio with default background color. Use for elements that do not require user interaction
@@ -19,7 +21,6 @@ $menu-border-color: #d8dcde;
 
 $button-color: $brand_color;
 
-$input-font-size: 14px;
 $field-text-color: #666;
 $field-text-focus-color: #555;
 

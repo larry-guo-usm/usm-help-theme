@@ -10,13 +10,13 @@
     text-align: center;
 
     &-title {
-      font-size: 16px;
+      font-size: $font-size-base;
       margin-bottom: 20px;
     }
   }
 
   &-featured-posts .title {
-    font-size: 18px;
+    font-size: $font-size-md;
     font-weight: 600;
   }
 
@@ -31,7 +31,7 @@
 
     .title {
       margin-bottom: 0;
-      font-size: 16px;
+      font-size: $font-size-base;
     }
   }
 }
@@ -59,7 +59,7 @@
 .topic-header {
   @include tablet { padding-bottom: 10px; }
   border-bottom: 1px solid $low-contrast-border-color;
-  font-size: $font-size-small;
+  font-size: $font-size-xs;
 
   .dropdown {
     @include tablet {

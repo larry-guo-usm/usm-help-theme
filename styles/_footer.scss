@@ -58,7 +58,7 @@
 
     span {
       font-weight: $font-weight-semibold;
-      font-size: 18px;
+      font-size: $font-size-md;
     }
   }
 
@@ -100,7 +100,7 @@
   }
 
   &-col-heading {
-    font-size: $font-size-small;
+    font-size: $font-size-xs;
     font-weight: 500;
     color: $secondary-text-color;
     margin: 0 0 14px;
@@ -152,7 +152,7 @@
   }
 
   &-copyright {
-    font-size: $font-size-small;
+    font-size: $font-size-xs;
     color: $secondary-text-color;
     margin: 0;
   }

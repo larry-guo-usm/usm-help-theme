@@ -10,7 +10,7 @@
 
 .form-field label {
   display: block;
-  font-size: $font-size-small;
+  font-size: $font-size-xs;
   margin-bottom: 5px;
 }
 
@@ -76,7 +76,7 @@
 
 .form-field p {
   color: $secondary-text-color;
-  font-size: 12px;
+  font-size: $font-size-xs;
   margin: 5px 0;
 }
 
@@ -92,7 +92,7 @@
 }
 
 .form .suggestion-list {
-  font-size: $font-size-small;
+  font-size: $font-size-xs;
   margin-top: 30px;
 
   label {
