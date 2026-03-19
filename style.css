@@ -207,15 +207,16 @@ h4,
 h5,
 h6 {
   font-family: "CustomHeadingFont", $heading_font;
-  margin-top: 0;
 }
 
 h1 {
   font-size: 32px;
+  margin-bottom: 0;
 }
 
 h2 {
   font-size: 24px;
+  margin-bottom: 16px;
 }
 
 h3 {
@@ -307,8 +308,6 @@ a:hover, a:active, a:focus {
 
 ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .error-page {
@@ -2028,6 +2027,7 @@ ul {
   }
 }
 .article-header {
+  margin-bottom: 16px;
   align-items: flex-start;
   display: flex;
   flex-direction: column;
@@ -2147,9 +2147,8 @@ ul {
 }
 .article-body ul,
 .article-body ol {
-  padding-left: 20px;
+  padding-left: 16px;
   list-style-position: outside;
-  margin: 20px 0 20px 20px;
 }
 [dir=rtl] .article-body ul,
 [dir=rtl] .article-body ol {
@@ -2793,9 +2792,8 @@ ul {
 }
 .comment-body ul,
 .comment-body ol {
-  padding-left: 20px;
+  padding-left: 16px;
   list-style-position: outside;
-  margin: 20px 0 20px 20px;
 }
 [dir=rtl] .comment-body ul,
 [dir=rtl] .comment-body ol {
@@ -3361,9 +3359,8 @@ ul {
 }
 .post-body ul,
 .post-body ol {
-  padding-left: 20px;
+  padding-left: 16px;
   list-style-position: outside;
-  margin: 20px 0 20px 20px;
 }
 [dir=rtl] .post-body ul,
 [dir=rtl] .post-body ol {
@@ -5618,9 +5615,8 @@ zd-summary-block {
 }
 .service-catalog-description ul,
 .service-catalog-description ol {
-  padding-left: 20px;
+  padding-left: 16px;
   list-style-position: outside;
-  margin: 20px 0 20px 20px;
 }
 [dir=rtl] .service-catalog-description ul,
 [dir=rtl] .service-catalog-description ol {

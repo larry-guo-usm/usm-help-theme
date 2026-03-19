@@ -25,15 +25,16 @@ h4,
 h5,
 h6 {
   font-family: "CustomHeadingFont", $heading_font;
-  margin-top: 0;
 }
 
 h1 {
   font-size: $font-size-xl;
+  margin-bottom: 0;
 }
 
 h2 {
   font-size: $font-size-lg;
+  margin-bottom: $font-size-base;
 }
 
 h3 {
@@ -134,8 +135,6 @@ a {
 
 ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 .error-page {
