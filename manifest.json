@@ -424,7 +424,7 @@
           "type": "text",
           "description": "home_card_description_description",
           "label": "home_card_1_description_label",
-          "value": "Manage your account, SIM, and profile settings."
+          "value": "Learn how to choose from our services and get connected with our quick start guide."
         },
         {
           "identifier": "home_card_2_icon",
@@ -437,7 +437,7 @@
           "type": "text",
           "description": "home_card_description_description",
           "label": "home_card_2_description_label",
-          "value": "Explore flexible wireless plans and add-on features."
+          "value": "Everything you need to know about using our apps to manage your lines and plans."
         },
         {
           "identifier": "home_card_3_icon",
@@ -450,7 +450,7 @@
           "type": "text",
           "description": "home_card_description_description",
           "label": "home_card_3_description_label",
-          "value": "Activate your SIM card and troubleshoot device issues."
+          "value": "Set up Wi-Fi calling, hotspot, or learn how to get device protection in case of accidents or malfunctions."
         },
         {
           "identifier": "home_card_4_icon",
@@ -476,7 +476,7 @@
           "type": "text",
           "description": "home_card_description_description",
           "label": "home_card_5_description_label",
-          "value": "Check coverage and troubleshoot connectivity issues."
+          "value": "Bring your number abroad with native roaming or get coverage with international data-only eSIMs."
         },
         {
           "identifier": "home_card_6_icon",
@@ -489,7 +489,7 @@
           "type": "text",
           "description": "home_card_description_description",
           "label": "home_card_6_description_label",
-          "value": "Get help from our team via chat, email, or phone."
+          "value": "Learn how to troubleshoot connectivity issues or get help from our expert support team."
         }
       ]
     }
