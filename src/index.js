@@ -4,6 +4,7 @@ import "./navigation";
 import "./dropdowns";
 import "./share";
 import "./search";
+import "./custom-search";
 import "./forms";
 import "./section-articles";
 import "./sections-subnav";
