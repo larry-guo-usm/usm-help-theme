@@ -7,11 +7,11 @@
   flex: 1;
   max-height: 45px;
   overflow: hidden;
-  padding: 10px 0;
   position: relative;
 
   &-title {
     margin-top: 0;
+    margin-bottom: 1rem;
     padding-left: 10px;
   }
 
@@ -159,7 +159,7 @@
   padding: 6px 10px;
   border-radius: 6px;
   color: $text_color;
-  margin: 1px 0;
+  margin: .5rem 0;
   transition: background 0.1s ease, color 0.1s ease;
 
   &:hover {

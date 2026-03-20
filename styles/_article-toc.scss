@@ -12,15 +12,15 @@
     max-height: calc(100vh - #{$header-height} - #{$subnav-height});
     overflow-y: auto;
     align-self: flex-start;
-    padding: 24px 0 24px 16px;
+    padding: 2rem 0 24px 16px;
   }
 
   &-heading {
+    display: flex;
+    align-items: center;
+    gap: 6px;
     font-size: $font-size-s;
     font-weight: $font-weight-semibold;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: $secondary-text-color;
     margin: 0 0 12px;
   }
 
@@ -31,6 +31,14 @@
   }
 
   &-item {
+    &--h2 > .article-toc-link {
+      color: $text_color;
+
+      &.is-active {
+        color: $brand_color;
+      }
+    }
+
     &--h3 > .article-toc-link {
       padding-left: 22px;
     }
@@ -127,11 +135,8 @@
   }
 
   &-title {
-    font-size: $font-size-s;
+    font-size: $font-size-base;
     font-weight: $font-weight-semibold;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: $secondary-text-color;
     margin: 0 0 8px;
     padding: 0 4px;
   }
@@ -140,6 +145,10 @@
     list-style: none;
     padding: 0;
     margin: 0;
+  }
+
+  .article-toc-item--h2 > .article-toc-link {
+    color: $text_color;
   }
 
   .article-toc-item--h3 > .article-toc-link {

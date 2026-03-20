@@ -10,10 +10,6 @@
   justify-content: space-between;
 
   &-column {
-    @include desktop {
-      flex: 0 0 75%;
-    }
-
     flex: 1;
   }
 
@@ -128,6 +124,7 @@
 
   &-list {
     margin-bottom: 25px;
+    padding-left: 0;
     > li {
       padding: 20px 0;
       &:first-child {
