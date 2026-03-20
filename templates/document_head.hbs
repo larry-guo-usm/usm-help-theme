@@ -1,4 +1,13 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<script>
+  // Rewrite canonical URLs to the custom domain (reverse proxy)
+  document.addEventListener('DOMContentLoaded', function() {
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.href = canonical.href.replace('https://help-usm.zendesk.com', 'https://www.usmobile.com/help');
+    }
+  });
+</script>
 {{#if settings.heading_font_file}}
 <style>
   @font-face {

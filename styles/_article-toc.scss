@@ -16,7 +16,7 @@
   }
 
   &-heading {
-    font-size: $font-size-xs;
+    font-size: $font-size-s;
     font-weight: $font-weight-semibold;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -43,7 +43,7 @@
   &-link {
     display: block;
     padding: 4px 0 4px 10px;
-    font-size: $font-size-xs;
+    font-size: $font-size-s;
     line-height: 1.45;
     color: $secondary-text-color;
     text-decoration: none;
@@ -127,7 +127,7 @@
   }
 
   &-title {
-    font-size: $font-size-xs;
+    font-size: $font-size-s;
     font-weight: $font-weight-semibold;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -153,7 +153,7 @@
   .article-toc-link {
     display: block;
     padding: 7px 8px;
-    font-size: $font-size-xs;
+    font-size: $font-size-s;
     color: $secondary-text-color;
     text-decoration: none;
     border-radius: 6px;

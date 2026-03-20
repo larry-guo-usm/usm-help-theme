@@ -106,7 +106,7 @@
 // Stats
 
 .profile-stats {
-  font-size: $font-size-xs;
+  font-size: $font-size-s;
   display: flex;
   flex-direction: column;
   flex-basis: 100%;
@@ -226,7 +226,7 @@
   border-radius: 4px;
   color: $brand_color;
   padding: 5px 20px;
-  font-size: $font-size-xs;
+  font-size: $font-size-s;
   text-align: center;
 
   .profile-private-icon {
@@ -270,7 +270,7 @@
   flex-basis: 100%;
   padding: 10px 0;
   color: $secondary-text-color;
-  font-size: $font-size-xs;
+  font-size: $font-size-s;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -284,7 +284,7 @@
 .profile-section-sorter {
   flex-basis: 100%;
   border-top: solid 1px #eee;
-  font-size: $font-size-xs;
+  font-size: $font-size-s;
 
   .dropdown-toggle {
     padding: 10px 0;
@@ -366,7 +366,7 @@
     &-description,
     &-metadata-description {
       color: $secondary-text-color;
-      font-size: $font-size-xs;
+      font-size: $font-size-s;
       margin: 0;
     }
 

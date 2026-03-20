@@ -25,7 +25,7 @@
     <nav class="user-nav" id="user-nav" aria-label="{{t 'user_navigation'}}">
       <ul class="user-nav-list">
         <li>{{link 'service_catalog'}}</li>
-        <li>{{link 'new_request' class='submit-a-request'}}</li>
+       <!-- <li>{{link 'new_request' class='submit-a-request'}}</li> -->
       </ul>
     </nav>
     {{#if signed_in}}
@@ -60,14 +60,14 @@
         <path stroke="currentColor" stroke-linecap="round" d="M11 11L7.5 7.5"/>
       </svg>
     </button>
-    <button class="menu-button-mobile" aria-controls="user-nav-mobile" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
+    <!--<button class="menu-button-mobile" aria-controls="user-nav-mobile" aria-expanded="false" aria-label="{{t 'toggle_navigation'}}">
       {{#if signed_in}}
         {{user_avatar class="user-avatar"}}
       {{/if}}
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" viewBox="0 0 16 16" class="icon-menu">
         <path fill="none" stroke="currentColor" stroke-linecap="round" d="M1.5 3.5h13m-13 4h13m-13 4h13"/>
       </svg>
-    </button>
+    </button> -->
     <nav class="menu-list-mobile" id="user-nav-mobile" aria-expanded="false">
       <ul class="menu-list-mobile-items">
         {{#if signed_in}}

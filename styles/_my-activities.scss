@@ -93,7 +93,7 @@
         margin-top: 0;
       }
 
-      font-size: $font-size-xs;
+      font-size: $font-size-s;
       margin-top: 30px;
     }
 
@@ -176,7 +176,7 @@
       position: absolute;
       left: calc(100% + 3px);
       bottom: 0;
-      font-size: $font-size-xs;
+      font-size: $font-size-s;
     }
   }
 }
@@ -223,7 +223,7 @@
     }
 
     color: $secondary-text-color;
-    font-size: $font-size-xs;
+    font-size: $font-size-s;
   }
 }
 

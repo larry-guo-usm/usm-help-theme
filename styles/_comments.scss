@@ -22,7 +22,7 @@
   &-callout {
     color: $secondary-text-color;
     display: inline-block;
-    font-size: $font-size-xs;
+    font-size: $font-size-s;
     margin-bottom: 0;
 
     @include standalone-link;
@@ -35,7 +35,7 @@
 
     .dropdown-toggle {
       color: $secondary-text-color;
-      font-size: $font-size-xs;
+      font-size: $font-size-s;
     }
 
     [dir="rtl"] & {

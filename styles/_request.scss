@@ -102,7 +102,7 @@
     @include desktop {
       background-color: $primary-shade;
       border: 0;
-      font-size: $font-size-xs;
+      font-size: $font-size-s;
       flex: 0 0 auto;
       padding: 0 20px;
       width: 30%; //IE11 fix
@@ -135,7 +135,7 @@
     dt, dd {
       display: inline-block;
       vertical-align: top;
-      font-size: $font-size-xs;
+      font-size: $font-size-s;
       margin: 20px 0 0 0;
     }
 

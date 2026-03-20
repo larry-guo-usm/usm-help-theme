@@ -80,6 +80,21 @@ const toggleClearSearchButtonAvailability = debounce((event) => {
   );
 }, 200);
 
+// Strip the category segment from instant search breadcrumbs.
+// Zendesk renders breadcrumbs as "Help Center > Category > Section";
+// this removes the middle (category) segment leaving "Help Center > Section".
+function stripCategoryFromBreadcrumbNode(node) {
+  var walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT, null);
+  var textNode;
+  while ((textNode = walker.nextNode())) {
+    var parts = textNode.textContent.split(" > ");
+    if (parts.length >= 3) {
+      parts.splice(1, 1);
+      textNode.textContent = parts.join(" > ");
+    }
+  }
+}
+
 // Search
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -93,4 +108,16 @@ window.addEventListener("DOMContentLoaded", () => {
     input.addEventListener("keyup", clearSearchInputOnKeypress);
     input.addEventListener("keyup", toggleClearSearchButtonAvailability);
   });
+
+  // Watch for instant search dropdown nodes and strip category breadcrumb segment
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      mutation.addedNodes.forEach(function(node) {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          stripCategoryFromBreadcrumbNode(node);
+        }
+      });
+    });
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
 });
